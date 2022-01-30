@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+<div>
+    <button id="butOpenFile">Play</button>
+</div>
+<script>
+    let fileHandle;
+    let videoWindow
+
+    butOpenFile.addEventListener('click', async () => {
+    
+            // Destructure the one-element array.
+        [fileHandle] = await window.showOpenFilePicker();
+        // Do something with the file handle.
+        //const file = await fileHandle.getFile();
+        //var fileURL = URL.createObjectURL(file)
+        //theVideo.src = fileURL;
+        if (!videoWindow) {
+            videoWindow = window.open("video.html", "TheVideoWindow", "left=100,top=100,width=1280,height=720");
+        }
+        
+        videoWindow.postMessage(
+            { "text": "test",
+                "fileHandle": fileHandle, 
+            }, '*');
+    });
+    
+    
+    //var video = document.getElementById('theVideo');
+    //video.play();
+</script>
+</body>
+</html>
