@@ -8,9 +8,9 @@
 <script>
     window.addEventListener("message", async (event) => {
         console.log('hello 3');
-        //const file = await event.data.getFile();
-        //var fileURL = URL.createObjectURL(file)
-        //theVideo.src = fileURL;
+        const file = await event.data.fileHandle.getFile();
+        var fileURL = URL.createObjectURL(file)
+        theVideo.src = fileURL;
     }, false);
 </script>
 </body>
